@@ -119,7 +119,7 @@
 				
             </div>
             <div class="card-body flex-column align-items-center">
-                <form action="/action_page.php">
+                <form action="/create-checkout-session" method="POST">
                     <div>
                         <div class="form-group col-md-6" style="float: left;">
                             <input type="radio" id="local" name="type" value="0">
@@ -155,13 +155,7 @@
                             <label for="PhoneNumber">Phone Number</label>
                             <input type="number" class="form-control" id="PhoneNumber">
                         </div>
-                        <div>
-                            <%= fa %> 
-                            <%= fc %> 
-                            <%= la %> 
-                            <%= lc %> 
-                        </div>
-                        <br>
+                      <br>
                         <button class="btn btn-success" onclick="myFunction()" >Book Now</button>
                         <div class="button">
                             <br>

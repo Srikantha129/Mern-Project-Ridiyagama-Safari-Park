@@ -2,7 +2,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
-
+const stripe = require('stripe')('sk_test_51LmgSBIM6riO7MM6Dtbm1buzdGz7cREoF4oaq8hBbbNpEZvpG7H0Ju1WqmsUxQseDZprsGypmjLmqzgPhkwh7yBb00G7eI3Zsr');
 
 require('dotenv').config();
 
@@ -63,10 +63,49 @@ const entryticketSchema = {
         
     }
 
-
+    
 
 
 }
+
+
+const successSchema = {
+    name : {
+        type : String,
+        required : true
+    },
+    email : {
+        type : String,
+        required : true
+    },
+    currency : {
+        type : String,
+        required : true
+    },
+    pnumber :{
+        type : Number,
+        required : true
+    },
+    amount :{
+        type : Number,
+        required : true
+    },
+    address : {
+       city : String,
+       country : String,
+       line1:String,
+       line2:String,
+       postal_code:String,
+       state : String
+
+        
+    }
+}
+
+//database collection for successfull ticket buy
+const Success = mongoose.model("Success",successSchema);
+
+
 //database collection for volunteer
 const Volunteer = mongoose.model("Volunteer",volunteerSchema);
 
@@ -141,11 +180,74 @@ app.post("/", function(req, res){
       
     })
 
-    
+
+// This is your test secret API key.
+
+app.post('/webhook', express.json({type: 'application/json'}), (request, response) => {
+    const event = request.body;
+  
+    // Handle the event
+    switch (event.type) {
+      case 'payment_intent.succeeded':
+        const paymentIntent = event.data.object;
+        //console.log(paymentIntent);
+        //console.log(`PaymentIntent for ${paymentIntent.email} was successful!`);
+        
+        // Then define and call a method to handle the successful payment intent.
+        // handlePaymentIntentSucceeded(paymentIntent);
+        break;
+      case 'payment_method.attached':
+        const paymentMethod = event.data.object;
+        // Then define and call a method to handle the successful attachment of a PaymentMethod.
+        // handlePaymentMethodAttached(paymentMethod);
+        break;
+      case 'checkout.session.completed':
+        const checkout = event.data.object;
+        //console.log(checkout);
+        checout();
+        
+       function checout(req, res){
+            let newSucces = new Success({
+            
+                name:checkout.customer_details.name,
+                email:checkout.customer_details.email,
+                pnumber:Number(checkout.customer_details.phone),
+                amount:Number(checkout.amount_total/100),
+                currency:checkout.currency,
+                address:checkout.customer_details.address
+            })
+            
+                newSucces.save();
+              
+            }
+       
+        // handlePaymentMethodAttached(paymentMethod);
+            break;
+        
+      default:
+        // Unexpected event type
+        console.log(`Unhandled event type ${event.type}.`);
+    }
+  
+    // Return a 200 response to acknowledge receipt of the event
+    response.send();
+  });
+
+
+
+
+
+
+
 
 
 
 //app.use("/volunteer",volunteerRouter);
+
+
+
+
+
 
 
 
