@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+
+body, html {
+        height: 100%;
+        margin: 0;
+        }
+        .bg {
+        /* The image used */
+        background-image: url("16.jpg");
+
+        /* Full height */
+        height: 100%; 
+
+        /* Center and scale the image nicely */
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size:cover;
+        }
+
+
+    body {font-family: Arial, Helvetica, sans-serif;}
+    form {border: 3px solid #f1f1f1;}
+
+    input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    }
+
+    button {
+    background-color: #14631f;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    }
+
+    button:hover {
+    opacity: 0.8;
+    }
+
+    .cancelbtn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #fd1606;
+    }
+
+    .container {
+    padding: 10px;
+    }
+
+    span.psw {
+    float: right;
+    padding-top: 16px;
+    }
+
+    .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    background-color: #f7f9f7;
+    padding: 50px;
+    border-radius: 4px;
+    opacity: 0.9;
+        }
+
+    /* Change styles for span and cancel button on extra small screens */
+    @media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .cancelbtn {
+        width: 100%;
+    }
+    }
+
+    .text{
+     color: rgb(10, 10, 10);
+     font-size:50px;
+    }
+
+</style>
+</head>
+<body>
+
+<div class="bg">
+
+    <br><br><br>
+
+    <h2 class="text" style="text-align:center">Login </h2>
+
+    <div class="card">
+
+        <form method="post" action="/admin_login">
+        
+        <div class="container">
+            <label for="uname"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username" name="username" required>
+
+            <label for="psw"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" name="password" required>
+                
+            <button type="submit">Login</button>
+            
+        </div>
+
+        <div class="container" style="background-color:#f1f1f1">
+            <a href="Login.html"button type="button" class="cancelbtn">Cancel</a>
+        </div>
+        </form>
+    
+    </div>
+</div>
+</body>
+</html>
