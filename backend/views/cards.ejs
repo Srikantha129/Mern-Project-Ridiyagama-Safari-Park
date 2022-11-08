@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body, html {
+        height: 100%;
+        margin: 0;
+        }
+        .bg {
+        /* The image used */
+        width: 100%;
+        align-items : center;
+        height: 100%;
+         
+
+        /* Background image is centered vertically and horizontally at all times */
+        background-position: center center;
+
+        /* Background image doesn't tile */
+        background-repeat: no-repeat;
+
+        /* Background image is fixed in the viewport so that it doesn't move when 
+        the content's height is greater than the image's height */
+        background-attachment: fixed;
+
+        /* This is what makes the background image rescale based
+        on the container's size */
+        background-size: cover;
+
+        /* Set a background color that will be displayed
+        while the background image is loading */
+        background-color: green;
+        overflow: hidden;
+        background-image: linear-gradient(to bottom right, rgb(34, 82, 26), rgb(85, 85, 12));
+
+        /* Location of the image */
+        background-image:url('16.jpg') ;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+        
+        body {
+          font-family: Arial, Helvetica, sans-serif;
+        }
+        
+        /* Float four columns side by side */
+        .column {
+          float:left;
+          width: 25%;
+          padding: 0px 10px;
+        }
+        
+        /* Remove extra left and right margins, due to padding */
+        .row {margin: 50px 100px;}
+        
+        /* Clear floats after the columns */
+        .row::after {
+          content: "";
+          display: table;
+          clear: both;
+        }
+        
+        /* Responsive columns */
+        @media screen and (max-width: 600px) {
+          .column {
+            width: 100%;
+            display: block;
+            margin-bottom: 20px;
+          }
+        }
+        
+        /* Style the counter cards */
+        .card {
+          box-shadow: 0 4px 20px 0 rgba(4, 63, 22, 0.2);
+          padding: 50px;
+          text-align: center;
+          background-color: #8ae37a;
+          border-radius: 4px;
+        }
+
+        /*button on the card*/
+        .button {
+            display: inline-block;
+            border-radius: 4px;
+            background-color: #14631f;
+            border: none;
+            color: #FFFFFF;
+            text-align: center;
+            font-size: 28px;
+            padding: 20px;
+            width: 200px;
+            transition: all 0.5s;
+            cursor: pointer;
+            margin: 5px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .button span {
+            cursor: pointer;
+            display: inline-block;
+            position: relative;
+            transition: 0.5s;
+        }
+
+        .button span:after {
+            content: '\00bb';
+            position: absolute;
+            opacity: 0;
+            top: 0;
+            right: -20px;
+            transition: 0.5s;
+        }
+
+        .button:hover span {
+             padding-right: 25px;
+        }
+
+        .button:hover span:after {
+            opacity: 10;
+            right: 0;
+        }
+        ul {
+            list-style-type: none;
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background-color: #7cda89;
+            }
+
+            li {
+            float: left;
+            }
+
+            li a {
+            display: block;
+            color: rgb(6, 6, 6);
+            text-align: center;
+            padding: 14px 16px;
+            text-decoration: none;
+            }
+
+            li a:hover {
+            background-color: rgb(160, 220, 165);
+            }
+        </style>
+</head>
+<body>
+
+  <ul>
+    <li><a class="active" href="/admin/Login.html">Home</a></li>
+    <li><a href="#news">Dashboard</a></li>
+</ul>
+
+    <div class="bg" style="background-image: linear-gradient(to bottom right, rgb(34, 82, 26), rgb(85, 85, 12));">
+        <br> <br> <br><br>
+    
+            <div class="row" style="padding-left: 200px;">
+                <div class="column">
+                <div class="card">
+                    <h1>Bookings</h1>
+                    <a href= "purchase" button class="button" style="vertical-align:middle"><span>View</span></a>
+                </div>
+                </div>
+            
+                <div class="column">
+                <div class="card">
+                    <h1>Volunteers</h1>
+                    <a href= "https://charts.mongodb.com/charts-mern-project-practice-tnafq/embed/dashboards?id=634842f2-0e65-4ab2-895a-60a1fe0f05bc&theme=dark&autoRefresh=true&maxDataAge=60&showTitleAndDesc=false&scalingWidth=fixed&scalingHeight=fixed" button class="button" style="vertical-align:middle"><span>View</span></a>
+                </div>
+                </div>
+
+                <div class="column">
+                <div class="card">
+                    <h1>Donations</h1>
+                    <a href= "purchase" button class="button" style="vertical-align:middle"><span>View</span></a>
+                </div>
+                </div>
+            
+                
+                </div>
+            </div>
+
+    </div>
+</body>
+</html>
